@@ -10,6 +10,7 @@ import SpinLoader from './../comonents/spin-loader/SpinLoader'
 
 // First Page
 const MainPage = React.lazy(() => import('./../features/counter/Counter'));
+const About = React.lazy(() => import('./../features/about/About'))
 
 function AppRoutes(props) {
     return (
@@ -18,6 +19,7 @@ function AppRoutes(props) {
             <React.Suspense fallback={<SpinLoader />}>
                 <Switch>
                     <Route exact path="/" name="main-page" component={MainPage} />
+                    <Route exact path="/about" name="about-page" component={About} />
                     {/* <Route exact path="/error-404" name="error404" component={Error404} /> */}
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>
