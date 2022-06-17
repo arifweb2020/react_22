@@ -11,7 +11,6 @@ import SpinLoader from './../comonents/spin-loader/SpinLoader'
 // First Page
 const MainPage = React.lazy(() => import('./../features/counter/Counter'));
 
-
 function AppRoutes(props) {
     return (
         <BrowserRouter>
@@ -22,7 +21,6 @@ function AppRoutes(props) {
                     {/* <Route exact path="/error-404" name="error404" component={Error404} /> */}
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>
-
             </React.Suspense>
 
         </BrowserRouter>
