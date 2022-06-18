@@ -9,8 +9,10 @@ import {
   selectCount,
 } from './counterSlice';
 import styles from './Counter.module.css';
+import SkeletonLoader from '../../comonents/skeleton/SkeletonLoader';
 
 export default function Counter() {
+  const name = useSelector(state=> state.user.data)
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -19,6 +21,7 @@ export default function Counter() {
 
   return (
     <div>
+     <h1>{name ? name[0]?.name : <SkeletonLoader width="200px"/>}</h1>
       <div className={styles.row}>
         <button
           className={styles.button}

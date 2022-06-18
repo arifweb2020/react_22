@@ -1,0 +1,18 @@
+.reduxDiv {
+  margin-top: 30px;
+  .box {
+    background: darkorange;
+    padding: 10px;
+    min-height: 200px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width:667px){
+    .reduxDiv {
+    .box {
+        background: green;
+
+      }
+    }
+}

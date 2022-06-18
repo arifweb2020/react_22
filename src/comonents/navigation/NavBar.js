@@ -24,7 +24,7 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/delete">DeleteFnc</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/movies">Movies</NavLink>
+                            <NavLink activeClassName="active" to="/redux">Redux</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink activeClassName="active" to="/phone">Phone</NavLink>
