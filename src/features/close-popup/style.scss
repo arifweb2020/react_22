@@ -1,0 +1,15 @@
+.closePopup{
+    & .innerDiv{
+        background: purple;
+    color: #fff;
+    width: 500px;
+    padding: 0px 10px 7px;
+    }
+    & button{
+        cursor: pointer;
+    background: red;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    }
+}

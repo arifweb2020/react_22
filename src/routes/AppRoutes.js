@@ -13,6 +13,7 @@ const MainPage = React.lazy(() => import('./../features/counter/Counter'));
 const About = React.lazy(() => import('./../features/about/About'));
 const Delete = React.lazy(() => import('./../features/delete/DeleteFn'));
 const Redux = React.lazy(() => import('./../features/redux/Redux'));
+const Popup = React.lazy(() => import('./../features/close-popup/ClosePopup'));
 const Error404 = React.lazy(() => import('./../features/error-page/ErrorPage'));
 
 function AppRoutes(props) {
@@ -25,6 +26,7 @@ function AppRoutes(props) {
                     <Route exact path="/about" name="about-page" component={About} />
                     <Route exact path="/delete" name="about-page" component={Delete} />
                     <Route exact path="/redux" name="about-page" component={Redux} />
+                    <Route exact path="/popup" name="about-page" component={Popup} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>

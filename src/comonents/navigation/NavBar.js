@@ -27,7 +27,7 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/redux">Redux</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/phone">Phone</NavLink>
+                            <NavLink activeClassName="active" to="/popup">Popup</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink activeClassName="active" to="/pagination">Pagination</NavLink>
