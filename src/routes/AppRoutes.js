@@ -15,6 +15,7 @@ const Delete = React.lazy(() => import('./../features/delete/DeleteFn'));
 const Redux = React.lazy(() => import('./../features/redux/Redux'));
 const Popup = React.lazy(() => import('./../features/close-popup/ClosePopup'));
 const Crud = React.lazy(() => import('./../features/crud/Crud'));
+const Weather = React.lazy(() => import('./../features/weather/Weather'));
 const Error404 = React.lazy(() => import('./../features/error-page/ErrorPage'));
 
 function AppRoutes(props) {
@@ -29,6 +30,7 @@ function AppRoutes(props) {
                     <Route exact path="/redux" name="redux-page" component={Redux} />
                     <Route exact path="/popup" name="popup-page" component={Popup} />
                     <Route exact path="/crud" name="crud-page" component={Crud} />
+                    <Route exact path="/weather" name="crud-page" component={Weather} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>

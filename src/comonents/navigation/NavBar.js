@@ -33,7 +33,7 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/crud">Crud</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/faq">Faq</NavLink>
+                            <NavLink activeClassName="active" to="/weather">Weather</NavLink>
                         </li>
                         {/* <li className="nav-item dropdown">
                             <a active ClassName="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

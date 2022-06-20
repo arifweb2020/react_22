@@ -41,6 +41,7 @@ function Crud(props) {
     const updateSubmission = (e) => {
         e.preventDefault();
         const updatedData = data.map((ele) => {
+            // console.log(ele)
             if (ele.name === edit) {
                 return { ...ele, name, city, course }
             }
