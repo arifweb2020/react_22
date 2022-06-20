@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap'
 
 const getAllData = () => {
     const allData = localStorage.getItem("studentsList")
@@ -15,6 +16,37 @@ function Crud(props) {
     const [name, setName] = useState("")
     const [course, setCourse] = useState("")
     const [city, setCity] = useState("")
+    const [show, setShow] = useState(false);
+    const [edit, setEdit] = useState(null)
+
+    const handleClose = () => setShow(false);
+    const handleShow = (id) => {
+        let update = data.find((ele) => {
+            return ele.name === id
+        })
+        //  console.log(update)
+        setName(update.name)
+        setCity(update.city)
+        setCourse(update.course)
+        setEdit(id)
+        setShow(true);
+    }
+
+    const updateSubmission = (e) => {
+        e.preventDefault();
+        setData(
+            data.map((ele) => {
+                if (ele.name === edit) {
+                    return {...ele,name,city,course}
+                 }
+                 return ele
+            })
+        )
+        setShow(false);
+        setName("")
+        setCourse("")
+        setCity("")
+    }
 
     const handleSubmission = (e) => {
         e.preventDefault();
@@ -80,7 +112,10 @@ function Crud(props) {
                                             <td>{ele.city}</td>
                                             <td ><span style={{ cursor: "pointer", color: "red" }}
                                                 onClick={() => delteData(ele.name)}
-                                            >delete</span></td>
+                                            >delete </span>
+                                                <span
+                                                    style={{ cursor: "pointer", color: "grey" }}
+                                                    onClick={() => handleShow(ele.name)}>Edit</span></td>
                                         </tr>
                                     })
                                 }
@@ -94,6 +129,35 @@ function Crud(props) {
 
                 </div>
             </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div>
+                        <form>
+                            <div className="form-group">
+                                <input type="text" required placeholder="Enter Name" value={name} className="form-control" onChange={(e) => setName(e.target.value)} />
+                            </div>
+                            <div className="form-group">
+                                <input type="text" required placeholder="Enter Course" value={course} className="form-control" onChange={(e) => setCourse(e.target.value)} />
+                            </div>
+                            <div className="form-group">
+                                <input type="text" required placeholder="Enter City" value={city} className="form-control" onChange={(e) => setCity(e.target.value)} />
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-md btn-primary" onClick={updateSubmission}>Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
