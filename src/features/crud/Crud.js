@@ -19,7 +19,13 @@ function Crud(props) {
     const [show, setShow] = useState(false);
     const [edit, setEdit] = useState(null)
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setName("")
+        setCourse("")
+        setCity("")
+    }
+
     const handleShow = (id) => {
         let update = data.find((ele) => {
             return ele.name === id
