@@ -40,14 +40,13 @@ function Crud(props) {
 
     const updateSubmission = (e) => {
         e.preventDefault();
-        setData(
-            data.map((ele) => {
-                if (ele.name === edit) {
-                    return {...ele,name,city,course}
-                 }
-                 return ele
-            })
-        )
+        const updatedData = data.map((ele) => {
+            if (ele.name === edit) {
+                return { ...ele, name, city, course }
+            }
+            return ele
+        })
+        setData(updatedData)
         setShow(false);
         setName("")
         setCourse("")
