@@ -30,7 +30,7 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/popup">Popup</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/pagination">Pagination</NavLink>
+                            <NavLink activeClassName="active" to="/crud">Crud</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink activeClassName="active" to="/faq">Faq</NavLink>
