@@ -1,0 +1,8 @@
+node_modules
+build
+.dockerignore
+Dockerfile
+Dockerfile.prod
+saml_service_provider
+coverage
+nginx
