@@ -20,8 +20,7 @@ function Dice(props) {
     const genRandomNo = () => {
       if (selectedNumber) {
         const genratedNo = Math.ceil(Math.random() * 6);
-        setDice(genratedNo);
-  
+        setDice(genratedNo); 
         if (selectedNumber === genratedNo) {
           setScore((prev) => prev + genratedNo);
         } else {

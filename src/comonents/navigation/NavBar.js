@@ -63,7 +63,7 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/apicall">Api</NavLink>
                         </li> */}
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/instaStories">Stories</NavLink>
+                            <NavLink activeClassName="active" to="/ecomm">Ecomm</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink activeClassName="active" to="/login">Login</NavLink>
