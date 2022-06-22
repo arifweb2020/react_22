@@ -6,7 +6,7 @@ function Ecomm(props) {
     const [data, setData] = React.useState([]);
     const [filterData, setFilterData] = React.useState(data);
     const [loading, setLaoding] = React.useState(true)
-    const [selected,setSelcted]=React.useState()
+    const [selected, setSelcted] = React.useState("")
 
     React.useEffect(() => {
         const getData = async () => {
@@ -26,22 +26,24 @@ function Ecomm(props) {
         //setLaoding(true)
         // console.log(prod)
         const prodData = data.filter(val => val.category === prod)
-        const selection = data.find(val => val.category === prod)
-          console.log(selection.category + prod)
+        //  const selection = data.find(val => val.category === prod)
+        // console.log(selection.category + prod)
         setFilterData(prodData)
-        setSelcted(selection.category)
+        setSelcted(prod)
         setLaoding(false)
 
     }
+
+    console.log("selected " + selected)
 
     return (
         <div className='container mt-4'>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <button type="button" className={filterData ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => setFilterData(data)}>All</button>
-                <button type="button" className={selected ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("men's clothing")}>men's clothing</button>
-                <button type="button" className={selected ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("women's clothing")}>women's clothing</button>
-                <button type="button" className={selected ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("jewelery")}>Jewellry</button>
-                <button type="button" className={selected ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("electronics")}>Electronics</button>
+                <button type="button" className={selected === "men's clothing" ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("men's clothing")}>men's clothing</button>
+                <button type="button" className={selected === "women's clothing" ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("women's clothing")}>women's clothing</button>
+                <button type="button" className={selected === "jewelery" ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("jewelery")}>Jewellry</button>
+                <button type="button" className={selected === "electronics" ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("electronics")}>Electronics</button>
             </div>
             <div className='row'>
                 {
