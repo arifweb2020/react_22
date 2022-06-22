@@ -57,7 +57,7 @@ function NavBar(props) {
                             </div>
                         </li> */}
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/useParams">Params</NavLink>
+                            <NavLink activeClassName="active" to="/dice">Dice</NavLink>
                         </li>
                         {/* <li className="nav-item">
                             <NavLink activeClassName="active" to="/apicall">Api</NavLink>
