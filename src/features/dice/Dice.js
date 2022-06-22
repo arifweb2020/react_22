@@ -68,7 +68,7 @@ function Dice(props) {
                   </button>
                 ))}
               </div>
-              <div h="150px" width="150px" >
+              <div h="150px" width="150px" style={{marginTop:"20px"}}>
                 <img src={`/dice/dice${dice}.png`} alt="icons" onClick={genRandomNo} style={{cursor:"pointer"}}/>
               </div>
   
