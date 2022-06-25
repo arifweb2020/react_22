@@ -9,6 +9,7 @@ import NavBar from '../comonents/navigation/NavBar';
 import SpinLoader from './../comonents/spin-loader/SpinLoader'
 
 // First Page
+
 const MainPage = React.lazy(() => import('./../features/counter/Counter'));
 const About = React.lazy(() => import('./../features/about/About'));
 const Delete = React.lazy(() => import('./../features/delete/DeleteFn'));

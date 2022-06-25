@@ -10,14 +10,14 @@ import { useSelector } from 'react-redux';
 
 function NavBar(props) {
   //  const cartItem = useSelector((state)=>state.cart.data.length)
-  //const carItem = JSON.parse(localStorage.getItem("shoping-item")).length
 
-  const [carItem,setCartItem]=React.useState(0)
-
-  React.useEffect(()=>{
-    setCartItem(JSON.parse(localStorage.getItem("shoping-item"))?.length)
-  },[carItem])
- 
+  const carItem= JSON.parse(localStorage.getItem("cart-item"))
+//  const [carItem,setCartItem]=React.useState(JSON.parse(localStorage.getItem("cart-item")))
+// React.useEffect(()=>{
+//     const data= JSON.parse(localStorage.getItem("cart-item"))
+//     setCartItem(data)
+    
+// },[carItem])
     return (
         <div className="navBar">
             <nav className="navbar navbar-expand-md bg-dark navbar-dark navbarBackground">

@@ -19,6 +19,7 @@ function Ecomm(props) {
     const [addItems, setAddItems] = React.useState(getAllLocalStorageData())
 
 
+
     React.useEffect(() => {
         const getData = async () => {
             const res = await fetch("https://fakestoreapi.com/products")
@@ -55,6 +56,7 @@ function Ecomm(props) {
 
     React.useEffect(() => {
         localStorage.setItem("shoping-item", JSON.stringify(addItems))
+        localStorage.setItem("cart-item", JSON.stringify(addItems.length))
     }, [addItems])
 
     const handleRemove = (prod) => {
