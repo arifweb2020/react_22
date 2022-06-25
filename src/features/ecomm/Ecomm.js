@@ -7,6 +7,17 @@ function Ecomm(props) {
     const [filterData, setFilterData] = React.useState(data);
     const [loading, setLaoding] = React.useState(true)
     const [selected, setSelcted] = React.useState("")
+    const getAllLocalStorageData = () => {
+        const allData = localStorage.getItem("shoping-item")
+        if (allData) {
+            return JSON.parse(allData)
+        }
+        else {
+            return []
+        }
+    }
+    const [addItems, setAddItems] = React.useState(getAllLocalStorageData())
+
 
     React.useEffect(() => {
         const getData = async () => {
@@ -36,8 +47,39 @@ function Ecomm(props) {
 
     console.log("selected " + selected)
 
+    const addData = (prod) => {
+        //  alert(JSON.stringify(prod))
+        setAddItems([...addItems, prod])
+
+    }
+
+    React.useEffect(() => {
+        localStorage.setItem("shoping-item", JSON.stringify(addItems))
+    }, [addItems])
+
+    const handleRemove = (prod) => {
+        const newItem = addItems.filter((val) => val.id !== prod)
+        setAddItems(newItem)
+
+    }
+
+
     return (
         <div className='container mt-4'>
+            {
+                addItems.map((pr) => {
+                    return <>
+                        <h2>{pr.title}</h2>
+                        <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => handleRemove(pr.id)}
+                        >
+                            Remove
+                        </button>
+                    </>
+                })
+            }
+
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <button type="button" className={filterData ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => setFilterData(data)}>All</button>
                 <button type="button" className={selected === "men's clothing" ? "btn btn-primary mr-2" : "btn btn-danger mr-2"} onClick={() => filterProducts("men's clothing")}>men's clothing</button>
@@ -67,13 +109,13 @@ function Ecomm(props) {
                         </>
                     ) : (
                         filterData?.map((ele, i) => {
-                            return <div className='col-md-4 mt-4 ' key={i}>
+                            return <div className='col-md-4 mt-4 ' key={ele.id}>
                                 <div className="card h-100 text-center p-4" >
                                     <img src={ele.image} alt="img" height="250px" />
                                     <div className="card-body">
                                         <h4 className="card-title mb-0">{ele.category}</h4>
                                         <p className="card-text">{ele.title}</p>
-
+                                        <button className="btn btn-md btn-primary" onClick={() => addData(ele)}>Add</button>
                                     </div>
                                 </div>
                             </div>

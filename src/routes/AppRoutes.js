@@ -19,6 +19,7 @@ const Weather = React.lazy(() => import('./../features/weather/Weather'));
 const Ecomm = React.lazy(() => import('./../features/ecomm/Ecomm'));
 const Error404 = React.lazy(() => import('./../features/error-page/ErrorPage'));
 const Dice = React.lazy(() => import('./../features/dice/Dice'));
+const Cart = React.lazy(() => import('./../features/cart/Cart'));
 
 function AppRoutes(props) {
     return (
@@ -34,7 +35,8 @@ function AppRoutes(props) {
                     <Route exact path="/crud" name="crud-page" component={Crud} />
                     <Route exact path="/weather" name="weather" component={Weather} />
                     <Route exact path="/dice" name="dice" component={Dice} />
-                    <Route exact path="/ecomm" name="dice" component={Ecomm} />
+                    <Route exact path="/ecomm" name="ecomm" component={Ecomm} />
+                    <Route exact path="/cart" name="cart" component={Cart} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>
