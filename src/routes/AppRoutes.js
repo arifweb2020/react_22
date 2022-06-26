@@ -22,7 +22,10 @@ const Error404 = React.lazy(() => import('./../features/error-page/ErrorPage'));
 const Dice = React.lazy(() => import('./../features/dice/Dice'));
 const Cart = React.lazy(() => import('./../features/cart/Cart'));
 
+
+
 function AppRoutes(props) {
+   
     return (
         <BrowserRouter>
             <NavBar />

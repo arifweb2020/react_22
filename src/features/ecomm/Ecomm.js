@@ -1,5 +1,6 @@
 import React from 'react';
 import SkeletonLoader from '../../comonents/skeleton/SkeletonLoader';
+import { getAllLocalStorageData } from './../../global/localStorage';
 
 
 function Ecomm(props) {
@@ -7,18 +8,8 @@ function Ecomm(props) {
     const [filterData, setFilterData] = React.useState(data);
     const [loading, setLaoding] = React.useState(true)
     const [selected, setSelcted] = React.useState("")
-    const getAllLocalStorageData = () => {
-        const allData = localStorage.getItem("shoping-item")
-        if (allData) {
-            return JSON.parse(allData)
-        }
-        else {
-            return []
-        }
-    }
     const [addItems, setAddItems] = React.useState(getAllLocalStorageData())
-
-
+  //  const [itemLength,setItemLength] = React.useState()
 
     React.useEffect(() => {
         const getData = async () => {
@@ -51,23 +42,23 @@ function Ecomm(props) {
     const addData = (prod) => {
         //  alert(JSON.stringify(prod))
         setAddItems([...addItems, prod])
-
+       // setItemLength(localStorage.getItem("cart-item"))
     }
 
     React.useEffect(() => {
         localStorage.setItem("shoping-item", JSON.stringify(addItems))
-        localStorage.setItem("cart-item", JSON.stringify(addItems.length))
+        localStorage.setItem("cart-item", JSON.stringify(addItems?.length))
     }, [addItems])
 
     const handleRemove = (prod) => {
         const newItem = addItems.filter((val) => val.id !== prod)
         setAddItems(newItem)
-
     }
-
+    
 
     return (
-        <div className='container mt-4'>
+        <div className='container mt-4' >
+            {addItems.length}
             {
                 addItems.map((pr) => {
                     return <>

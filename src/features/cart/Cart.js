@@ -1,26 +1,26 @@
 import React from 'react';
+import { getAllLocalStorageData } from '../../global/localStorage';
 
-function Cart(props) {
-    const getAllLocalStorageData = () => {
-        const allData = localStorage.getItem("shoping-item")
-        if (allData) {
-            return JSON.parse(allData)
-        }
-        else {
-            return []
-        }
-    }
+function Cart() {
+
     const [items, setItems] = React.useState(getAllLocalStorageData())
-    //  const items = JSON.parse(localStorage.getItem("shoping-item"))
+
+
     const handleRemove = (prod) => {
         const newItem = items.filter((val) => val.id !== prod)
         setItems(newItem)
+     
     }
+
+    React.useEffect(() => {
+        localStorage.setItem("shoping-item", JSON.stringify(items))
+        localStorage.setItem("cart-item", JSON.stringify(items?.length))
+    }, [items])
 
  
     return (
         <div className='container'>
-            <h1>Cart Item</h1>
+            <h1>Cart Item {items.length}</h1>
             <div className="row" style={{ background: "#grey" }}>
 
                 <div className='col-md-12 mb-5'>

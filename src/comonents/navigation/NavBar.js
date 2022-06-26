@@ -7,17 +7,14 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './style.scss';
 import { useSelector } from 'react-redux';
+import { getAllLocalStorageData, itemLength } from '../../global/localStorage';
 
 function NavBar(props) {
-  //  const cartItem = useSelector((state)=>state.cart.data.length)
+    //  const cartItem = useSelector((state)=>state.cart.data.length)
 
-  const carItem= JSON.parse(localStorage.getItem("cart-item"))
-//  const [carItem,setCartItem]=React.useState(JSON.parse(localStorage.getItem("cart-item")))
-// React.useEffect(()=>{
-//     const data= JSON.parse(localStorage.getItem("cart-item"))
-//     setCartItem(data)
-    
-// },[carItem])
+    const carItem = getAllLocalStorageData()
+
+ 
     return (
         <div className="navBar">
             <nav className="navbar navbar-expand-md bg-dark navbar-dark navbarBackground">
@@ -76,7 +73,7 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/ecomm">Ecomm</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" to="/cart">Cart {carItem} </NavLink>
+                            <NavLink activeClassName="active" to="/cart">Cart {carItem.length} </NavLink>
                         </li>
                     </ul>
                 </div>

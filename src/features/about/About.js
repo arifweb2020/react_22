@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SkeletonLoader from '../../comonents/skeleton/SkeletonLoader';
+import { getAllLocalStorageData } from '../../global/localStorage';
 
 function About(props) {
     const counter = useSelector((state) => state.counter.value);
@@ -16,6 +17,8 @@ function About(props) {
         }
         getData()
     }, [])
+
+    
 
 
     return (
@@ -62,7 +65,7 @@ function About(props) {
 
 
         <div style={{ maxWidth: "80%", margin: "0 auto" }}>
-            <h1>{counter}</h1>
+            <h1>{counter} </h1>
 
             {
                 loading
