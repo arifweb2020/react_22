@@ -12,7 +12,12 @@ function Filter(props) {
     const category = fake_data.filter((obj, pos, arr) => {
         return arr.map(mapObj => mapObj.category).indexOf(obj.category) === pos;
     })
-    // console.log(category)
+
+    // filter by color
+    const color = fake_data.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj.color).indexOf(obj.color) === pos;
+    })
+
 
 
     // ====== SORTING DATA BY HIGH, MID, LOW RATE =========
@@ -49,6 +54,20 @@ function Filter(props) {
         setMyData(filterData);
     }
 
+    const colorHandler = (e) => {
+        const filterVal = e.target.value;
+        const filterData = fake_data.filter((item) => item.color === filterVal);
+        console.log(filterData)
+        setMyData(filterData);
+    }
+
+    // checkbox filter
+
+    const filterData = (val)=>{
+        const colorFinder = fake_data.filter((item) => item.color === val);
+        setMyData(colorFinder)
+    }
+
     return (
         <>
             <section>
@@ -82,20 +101,41 @@ function Filter(props) {
                 <div className='container  mb-5'>
                     <h1>Filter Fn</h1>
                     <div className='row mt-4'>
-                        <div className='col-md-4'>
+                        <div className='col-md-3'>
                             <h5>Category</h5>
                             <div className='form-group'>
                                 <select className='form-control' onChange={categoryHandler}>
                                     <option>All Categories</option>
-                           
-                            {
-                                category.map((ele) => {
-                                    return <option value={ele.category}>{ele.category}</option>
-                                })
-                            }
-                                    {/* <option value="mens">Mens</option>
-                                    <option value="womens">Womens</option> */}
+                                    {
+                                        category.map((ele) => {
+                                            return <option value={ele.category}>{ele.category}</option>
+                                        })
+                                    }
                                 </select>
+                            </div>
+                        </div>
+                        <div className='col-md-3'>
+                            <h5>Select Color</h5>
+                            <div className='form-group'>
+                                <select className='form-control' onChange={colorHandler}>
+                                    <option>Select Color</option>
+                                    {
+                                        color.map((ele) => {
+                                            return <option value={ele.color}>{ele.color}</option>
+                                        })
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div className='col-md-3'>
+                            <h5>Select Color</h5>
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <span><input type="checkbox" onClick={()=>filterData("red")}/> red</span>
+                                <span><input type="checkbox" onClick={()=>filterData("white")}/> white </span>
+                                <span><input type="checkbox" onClick={()=>filterData("green")}/> green </span>
+                                <span><input type="checkbox" onClick={()=>filterData("blue")}/> blue </span>
+                                <span><input type="checkbox" onClick={()=>filterData("black")}/> black </span>
+                                <span><input type="checkbox" onClick={()=>filterData("grey")}/> grey </span>
                             </div>
                         </div>
                     </div>
