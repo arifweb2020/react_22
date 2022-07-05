@@ -73,6 +73,9 @@ function NavBar(props) {
                             <NavLink activeClassName="active" to="/ecomm">Ecomm</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink activeClassName="active" to="/filter">Filter</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink activeClassName="active" to="/cart">Cart {carItem.length} </NavLink>
                         </li>
                     </ul>
