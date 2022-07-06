@@ -49,6 +49,10 @@ function Filter(props) {
 
     const categoryHandler = (e) => {
         const filterVal = e.target.value;
+        console.log("filterVal " + filterVal)
+        if(filterVal === "All Categories"){
+            return setMyData(fake_data)
+        }
         const filterData = fake_data.filter((item) => item.category === filterVal);
         console.log(filterData)
         setMyData(filterData);
@@ -56,6 +60,10 @@ function Filter(props) {
 
     const colorHandler = (e) => {
         const filterVal = e.target.value;
+        console.log("filterVal " + filterVal)
+        if(filterVal === "Select Color"){
+            return setMyData(fake_data)
+        }
         const filterData = fake_data.filter((item) => item.color === filterVal);
         console.log(filterData)
         setMyData(filterData);
