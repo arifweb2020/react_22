@@ -22,6 +22,7 @@ const Error404 = React.lazy(() => import('./../features/error-page/ErrorPage'));
 const Dice = React.lazy(() => import('./../features/dice/Dice'));
 const Cart = React.lazy(() => import('./../features/cart/Cart'));
 const Filter = React.lazy(() => import('./../features/filter/Filter'));
+const Speech = React.lazy(() => import('./../features/speech/Speech'));
 
 
 
@@ -43,6 +44,7 @@ function AppRoutes(props) {
                     <Route exact path="/ecomm" name="ecomm" component={Ecomm} />
                     <Route exact path="/filter" name="ecomm" component={Filter} />
                     <Route exact path="/cart" name="cart" component={Cart} />
+                    <Route exact path="/speech" name="speech" component={Speech} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>
