@@ -5,13 +5,52 @@ import { NFT__DATA, fake_data } from './../../dummy-data/data'
 function Filter(props) {
 
     const [data, setData] = React.useState(NFT__DATA);
+    const [mydata, setMyData] = React.useState(fake_data);
+    const [fakeData, setFakeData] = React.useState([]);
+    const [products, setProducts] = React.useState(fakeData)
 
-    const [mydata, setMyData] = React.useState(fake_data)
+    React.useEffect(() => {
+        const getData = async () => {
+            const res = await fetch('https://fakestoreapi.com/products')
+            const res1 = await res.json()
+            // console.log("res " + JSON.stringify(res1))
+            setFakeData(res1)
+            setProducts(res1)
+        }
+        getData()
+    }, [])
+
+    // filter common category name
+    const prod = fakeData.filter((val, pos, data) => {
+        return data.map((ele) => ele.category).indexOf(val.category) === pos
+    })
+
+
+    // filter live api category
+    const catHandler = (e) => {
+
+        const filterCat = e.target.value;
+        if(filterCat === "All Categories"){
+            return setProducts(fakeData)
+        } 
+
+        const mydata = fakeData.filter((val, i) => val.category === filterCat)
+        setProducts(mydata)
+
+    }
 
     // filter common category name
     const category = fake_data.filter((obj, pos, arr) => {
         return arr.map(mapObj => mapObj.category).indexOf(obj.category) === pos;
     })
+
+    let a23 = [10, 20, 30, 10, 50, 20, 80, 25]
+    // filter common number which is 10,20
+    let x09 = a23.filter(function (value, index) {
+        return a23.indexOf(value) === index;
+    });
+
+    console.log(x09)
 
     // filter by color
     const color = fake_data.filter((obj, pos, arr) => {
@@ -50,7 +89,7 @@ function Filter(props) {
     const categoryHandler = (e) => {
         const filterVal = e.target.value;
         console.log("filterVal " + filterVal)
-        if(filterVal === "All Categories"){
+        if (filterVal === "All Categories") {
             return setMyData(fake_data)
         }
         const filterData = fake_data.filter((item) => item.category === filterVal);
@@ -61,7 +100,7 @@ function Filter(props) {
     const colorHandler = (e) => {
         const filterVal = e.target.value;
         console.log("filterVal " + filterVal)
-        if(filterVal === "Select Color"){
+        if (filterVal === "Select Color") {
             return setMyData(fake_data)
         }
         const filterData = fake_data.filter((item) => item.color === filterVal);
@@ -71,7 +110,7 @@ function Filter(props) {
 
     // checkbox filter
 
-    const filterData = (val)=>{
+    const filterData = (val) => {
         const colorFinder = fake_data.filter((item) => item.color === val);
         setMyData(colorFinder)
     }
@@ -138,12 +177,12 @@ function Filter(props) {
                         <div className='col-md-3'>
                             <h5>Select Color</h5>
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                <span><input type="checkbox" onClick={()=>filterData("red")}/> red</span>
-                                <span><input type="checkbox" onClick={()=>filterData("white")}/> white </span>
-                                <span><input type="checkbox" onClick={()=>filterData("green")}/> green </span>
-                                <span><input type="checkbox" onClick={()=>filterData("blue")}/> blue </span>
-                                <span><input type="checkbox" onClick={()=>filterData("black")}/> black </span>
-                                <span><input type="checkbox" onClick={()=>filterData("grey")}/> grey </span>
+                                <span><input type="checkbox" onClick={() => filterData("red")} /> red</span>
+                                <span><input type="checkbox" onClick={() => filterData("white")} /> white </span>
+                                <span><input type="checkbox" onClick={() => filterData("green")} /> green </span>
+                                <span><input type="checkbox" onClick={() => filterData("blue")} /> blue </span>
+                                <span><input type="checkbox" onClick={() => filterData("black")} /> black </span>
+                                <span><input type="checkbox" onClick={() => filterData("grey")} /> grey </span>
                             </div>
                         </div>
                     </div>
@@ -161,6 +200,40 @@ function Filter(props) {
                             })
                         }
                     </div>
+                    <div className='row mt-4'>
+                        <h2>MAIN API</h2>
+                    </div>
+                    <div className='row mt-4'>
+                        <div className='col-md-3'>
+                            <h5>Category</h5>
+                            <div className='form-group'>
+                                <select className='form-control' onChange={catHandler}>
+                                    <option>All Categories</option>
+                                    {
+                                        prod.map((ele) => {
+                                            return <option value={ele.category}>{ele.category}</option>
+                                        })
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        {
+                            products?.map((ele, i) => {
+                                return <div className='col-md-4 mt-3' key={i}>
+                                    <div className='card shadow-lg p-3'>
+                                        <h3>Category - {ele.category}</h3>
+                                        <p>Price - {ele.price}</p>
+
+                                    </div>
+                                </div>
+                            })
+                        }
+                    </div>
+
+
+
                 </div>
             </section>
         </>
