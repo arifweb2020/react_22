@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { NFT__DATA, fake_data } from './../../dummy-data/data'
+import { NFT__DATA, fake_data } from './../../dummy-data/data';
+import { Link } from 'react-router-dom';
 
 function Filter(props) {
 
@@ -120,7 +121,8 @@ function Filter(props) {
             <section>
                 <Container className='mt-5'>
                     <Row>
-                        <Col lg="12" className="mb-5">
+                        <h3><Link to="/dp_filter">Dependent Filter</Link></h3>
+                        <Col lg="12" className="mb-5 mt-3">
                             <div className="market__product__filter d-flex align-items-center justify-content-between">
 
 

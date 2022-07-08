@@ -23,7 +23,7 @@ const Dice = React.lazy(() => import('./../features/dice/Dice'));
 const Cart = React.lazy(() => import('./../features/cart/Cart'));
 const Filter = React.lazy(() => import('./../features/filter/Filter'));
 const Speech = React.lazy(() => import('./../features/speech/Speech'));
-
+const DpFilter = React.lazy(() => import('./../features/filter/DpFilter'));
 
 
 function AppRoutes(props) {
@@ -43,6 +43,7 @@ function AppRoutes(props) {
                     <Route exact path="/dice" name="dice" component={Dice} />
                     <Route exact path="/ecomm" name="ecomm" component={Ecomm} />
                     <Route exact path="/filter" name="ecomm" component={Filter} />
+                    <Route exact path="/dp_filter" name="ecomm" component={DpFilter} />
                     <Route exact path="/cart" name="cart" component={Cart} />
                     <Route exact path="/speech" name="speech" component={Speech} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
