@@ -6,8 +6,8 @@ function DpFilter(props) {
     const [data, setData] = React.useState(fake_data);
     const [filterdData, setFilterData] = React.useState([]);
     console.log("fdd " + JSON.stringify(filterdData));
-    const [colorData, setColorData] = React.useState(filterdData);
-    console.log("color " + JSON.stringify(colorData));
+    // const [colorData, setColorData] = React.useState(filterdData);
+    // console.log("color " + JSON.stringify(colorData));
     // first find price array
     const maxData = data.map(ele => ele.price)
 
