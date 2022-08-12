@@ -19,10 +19,14 @@ export default function Counter() {
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
+ 
+
+ 
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
     <div>
+    
       <h1>{name ? name[0]?.name : <SkeletonLoader width="200px" />}</h1>
       <ErrorBoundary>
         <Box text='' />
