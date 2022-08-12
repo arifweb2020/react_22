@@ -25,6 +25,7 @@ const Filter = React.lazy(() => import('./../features/filter/Filter'));
 const Speech = React.lazy(() => import('./../features/speech/Speech'));
 const DpFilter = React.lazy(() => import('./../features/filter/DpFilter'));
 const Table = React.lazy(() => import('./../features/table/Table'));
+const Rtable = React.lazy(() => import('./../features/table/Rtable'));
 
 
 function AppRoutes(props) {
@@ -48,6 +49,7 @@ function AppRoutes(props) {
                     <Route exact path="/cart" name="cart" component={Cart} />
                     <Route exact path="/speech" name="speech" component={Speech} />
                     <Route exact path="/table" name="speech" component={Table} />
+                    <Route exact path="/react-table" name="speech" component={Rtable} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>

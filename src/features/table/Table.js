@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import TableComp from '../../comonents/table-componet/TableComp';
+import {useHistory} from 'react-router-dom'
 
 function Table(props) {
     const [data, setData] = useState([])
@@ -8,6 +9,10 @@ function Table(props) {
     const [pageNumber, setPageNumber] = React.useState(0);
     const productPerPage = 10;
     const [pageCount, setPageCount] = useState(0)
+    const history = useHistory()
+
+    // https://www.youtube.com/watch?v=rgY1oPNVgwU
+    // https://www.youtube.com/watch?v=xRBE4iKX0yw&t=2020s
 
     useEffect(() => {
         const getData = async () => {
@@ -36,11 +41,12 @@ function Table(props) {
        // const selectedPage = e.selected;
         setPageNumber(selected);
     };
+    
 
 
     return (
         <div className='container mt-4'>
-            <h1>Table Filter</h1>
+            <h1>Table Filter <span onClick={()=>history.push('/react-table')} style={{cursor:'pointer',textDecoration:'underline',fontSize:'17px'}}>React Table</span></h1>
             {query.length}
             <div className='row'>
                 <div className='col-md-4'>
