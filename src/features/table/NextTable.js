@@ -25,9 +25,6 @@ function NextTable(props) {
     const aa = Array(data.length / 10).fill().reduce(arr => (arr.push(arr.length), arr), [])
     // console.log(aa)
 
-    const mm = 200 / 10;
-    console.log("length " + mm)
-
     // this function is used for custom pagination
     const pageData = React.useMemo(() => { //use useMemo to memorize the page
         return data.filter((ele) => ele.title.toLowerCase().includes(searchTxtx)).slice(page * 10, (page * 10) + 10)
@@ -47,15 +44,26 @@ function NextTable(props) {
     }
 
     const perPage = (e) => {
-        setPage(prev => prev + 1) //next page
+        const x = Math.ceil((e.target.value * 10) * 0.1)
+        console.log("value " + x)
+
+        if (e.target.value === 0) {
+            setPage(0) //next page
+        }
+        else {
+            setPage(x)
+        }
+
     }
 
     return (
         <div className='container mt-5 mb-5'>
+            {page}
             <input type="text" value={searchTxtx} placeholder="Search " onChange={(e) => setSearchTxt(e.target.value)} />
             <select onChange={perPage} className="ml-2">
                 {
                     aa.map((ele) => {
+                        // console.log("ele " + ele)
                         return <option value={ele}>{ele + 1}</option>
                     })
                 }
