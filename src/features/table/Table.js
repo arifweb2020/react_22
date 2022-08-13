@@ -14,6 +14,8 @@ function Table(props) {
     // https://www.youtube.com/watch?v=rgY1oPNVgwU
     // https://www.youtube.com/watch?v=xRBE4iKX0yw&t=2020s
     //https://www.youtube.com/watch?v=xRBE4iKX0yw
+    // https://codesandbox.io/s/react-data-table-forked-d6m05?file=/src/index.js
+    //https://stackblitz.com/edit/react-1zaeqk?file=src%2FPagination.js
 
     useEffect(() => {
         const getData = async () => {
@@ -47,7 +49,9 @@ function Table(props) {
 
     return (
         <div className='container mt-4'>
-            <h1>Table Filter <span onClick={() => history.push('/react-table')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>React Table</span></h1>
+            <h1>Table Filter <span onClick={() => history.push('/react-table')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>React Table</span>
+            - <span onClick={() => history.push('/ntable')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>Next Table</span>
+            </h1>
             <p>Page {pageNo} of {Math.ceil(data.length / 10)}</p>
             <p>
                 <select value={pageNumber}
