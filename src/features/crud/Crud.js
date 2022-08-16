@@ -18,6 +18,8 @@ function Crud(props) {
     const [city, setCity] = useState("")
     const [show, setShow] = useState(false);
     const [edit, setEdit] = useState(null)
+    const [query, setQuery] = useState("")
+    const [page, setPage] = React.useState(0);
 
     const handleClose = () => {
         setShow(false);
@@ -78,9 +80,39 @@ function Crud(props) {
         setData(newData)
     }
 
+    const pageData = React.useMemo(() => { //use useMemo to memorize the page
+        return data.filter((ele) => ele.name.toLowerCase().includes(query)
+            || ele.city.toLowerCase().includes(query) || ele.course.toLowerCase().includes(query)
+        ).slice(page * 5, (page * 5) + 5)
+    }, [data, page, query])
+
+    const nextPage = () => {
+        // u can put validation like that
+        // console.log(" data " + data.length)
+        // if((page * 10) + 10 === Math.ceil(data.length)){
+        //     return alert("casdds")
+        // }
+        setPage(prev => prev + 1) //next page
+    }
+
+    const prevPage = () => {
+        setPage(prev => prev > 0 ? prev - 1 : prev) //prev page - need to add condition here so it doesn't go below 0
+    }
+
+    const x = {
+
+        name: "ARIFHUSSAIN Kalim SHAH"
+    }
+
+    const num = [20, 30, 15, 20, 90, 80, 15, 60, 90];
+
+    const y = num.filter((val, i) => num.indexOf(val) === i)
+    console.log(y)
+
     return (
         <div style={{ maxWidth: "70%", margin: "0 auto" }}>
-            <h2>CRUD with Local Storage</h2>
+            <h2>CRUD with Local Storage <span style={{ textTransform: "capitalize" }}>Hi, {x.name.split(" ")[1].toLowerCase()}</span> </h2>
+            <p>{x.name.slice(2, 7)}</p>
             <div className="row" style={{ marginTop: "30px" }}>
                 <div className="col-md-4">
                     <form>
@@ -99,6 +131,7 @@ function Crud(props) {
                     </form>
                 </div>
                 <div className="col-md-6">
+                    <input type="text" onChange={(e) => setQuery(e.target.value)} /><br />
                     {
                         data.length > 0 ? <><table className='table table-stried'>
                             <thead>
@@ -111,7 +144,7 @@ function Crud(props) {
                             </thead>
                             <tbody>
                                 {
-                                    data.map((ele, i) => {
+                                    pageData.map((ele, i) => {
                                         return <tr key={i}>
                                             <td>{ele.name}</td>
                                             <td>{ele.course}</td>
@@ -132,6 +165,14 @@ function Crud(props) {
                         </>
                             : <h2>No data found</h2>
                     }
+                   {data.length}
+                    <button onClick={prevPage}
+                        className="btn btn-sm btn-primary mr-4"
+                        disabled={page === 0}
+                    >Prev</button>
+                    <button onClick={nextPage}
+                        disabled={(page * 5) + 5 >= Math.ceil(data.length)}
+                        className="btn btn-sm btn-primary">Next</button>
 
                 </div>
             </div>
