@@ -1,107 +1,120 @@
+import React from 'react';
 import { Col, Row } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
 import BulletinList from "./../../comonents/BulletinList"
 
 const Mtable = () => {
-  const [bulletins] = useState([
-    {
-      bbID: 1,
-      liveStatus: "live",
-      title: "Bulletin 1",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 20
-    },
-    {
-      bbID: 2,
-      liveStatus: "live",
-      title: "Bulletin 2",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 3
-    },
-    {
-      bbID: 3,
-      liveStatus: "end",
-      title: "Bulletin 3",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 28
-    },
-    {
-      bbID: 4,
-      liveStatus: "live",
-      title: "Bulletin 4",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 17
-    },
-    {
-      bbID: 5,
-      liveStatus: "live",
-      title: "Bulletin 5",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 20
-    },
-    {
-      bbID: 6,
-      liveStatus: "live",
-      title: "Bulletin 6",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 3
-    },
-    {
-      bbID: 7,
-      liveStatus: "end",
-      title: "Bulletin 7",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 28
-    },
-    {
-      bbID: 8,
-      liveStatus: "live",
-      title: "Bulletin 8",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 17
-    },
-    {
-      bbID: 9,
-      liveStatus: "live",
-      title: "Bulletin 9",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 20
-    },
-    {
-      bbID: 10,
-      liveStatus: "live",
-      title: "Bulletin 10",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 3
-    },
-    {
-      bbID: 11,
-      liveStatus: "end",
-      title: "Bulletin 11",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 28
-    },
-    {
-      bbID: 12,
-      liveStatus: "live",
-      title: "Bulletin 12",
-      createdDate: "2021-07-28 12:00:00",
-      createdBy: "Mary",
-      viewCount: 17
+    const [bulletins,setBulletins]=React.useState([]);
+
+    React.useEffect(()=>{
+        const getData = async () => {
+            const res = await fetch("https://jsonplaceholder.typicode.com/albums")
+            const res1 = await res.json()
+            setBulletins(res1)
+           // setPageCount(Math.ceil(res1?.length / productPerPage))
+        }
+        getData()
     }
-  ]);
+    ,[])
+//   const [bulletins] = useState([
+//     {
+//       bbID: 1,
+//       liveStatus: "live",
+//       title: "Bulletin 1",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 20
+//     },
+//     {
+//       bbID: 2,
+//       liveStatus: "live",
+//       title: "Bulletin 2",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 3
+//     },
+//     {
+//       bbID: 3,
+//       liveStatus: "end",
+//       title: "Bulletin 3",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 28
+//     },
+//     {
+//       bbID: 4,
+//       liveStatus: "live",
+//       title: "Bulletin 4",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 17
+//     },
+//     {
+//       bbID: 5,
+//       liveStatus: "live",
+//       title: "Bulletin 5",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 20
+//     },
+//     {
+//       bbID: 6,
+//       liveStatus: "live",
+//       title: "Bulletin 6",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 3
+//     },
+//     {
+//       bbID: 7,
+//       liveStatus: "end",
+//       title: "Bulletin 7",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 28
+//     },
+//     {
+//       bbID: 8,
+//       liveStatus: "live",
+//       title: "Bulletin 8",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 17
+//     },
+//     {
+//       bbID: 9,
+//       liveStatus: "live",
+//       title: "Bulletin 9",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 20
+//     },
+//     {
+//       bbID: 10,
+//       liveStatus: "live",
+//       title: "Bulletin 10",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 3
+//     },
+//     {
+//       bbID: 11,
+//       liveStatus: "end",
+//       title: "Bulletin 11",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 28
+//     },
+//     {
+//       bbID: 12,
+//       liveStatus: "live",
+//       title: "Bulletin 12",
+//       createdDate: "2021-07-28 12:00:00",
+//       createdBy: "Mary",
+//       viewCount: 17
+//     }
+//   ]);
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -123,7 +136,9 @@ const Mtable = () => {
     .map((bulletin) => {
       return (
         <>
-          <BulletinList key={bulletin.bbID} bulletin={bulletin} />
+          <div key={bulletin.id} >
+            <p>{bulletin.title}</p>
+          </div>
         </>
       );
     });
@@ -146,7 +161,7 @@ const Mtable = () => {
   };
 
   return (
-    <>
+    <div className='container mt-4'>
       <div className="search-wrapper">
        
         <label for="search-form">
@@ -161,7 +176,7 @@ const Mtable = () => {
           />
         </label>
       </div>
-      <Row xs={1} md={4} className="g-4">
+      <Row xs={1} md={12} className="g-4">
         {displayBulletins}
       </Row>
       <Row>
@@ -184,7 +199,7 @@ const Mtable = () => {
           />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ function Table(props) {
     const [query, setQuery] = useState("")
     const [pageNumber, setPageNumber] = React.useState(0);
     const productPerPage = 10;
-    const [pageCount, setPageCount] = useState(0)
+    //const [pageCount, setPageCount] = useState(0)
     const history = useHistory()
     const { i18n, t } = useTranslation(["common", "table"]);
 
@@ -26,7 +26,7 @@ function Table(props) {
             const res = await fetch("https://jsonplaceholder.typicode.com/albums")
             const res1 = await res.json()
             setData(res1)
-            setPageCount(Math.ceil(res1?.length / productPerPage))
+           // setPageCount(Math.ceil(res1?.length / productPerPage))
         }
         if (query.length === 0 || query.length > 2) {
             getData()
@@ -43,6 +43,19 @@ function Table(props) {
             keys.some((key) => item[key].toString().toLowerCase().includes(query))
         ).slice(visitedPage, visitedPage + productPerPage)
     }
+
+    const pageCount = Math.ceil(
+        data.filter((bulletin) => {
+          if (query === "") {
+            return bulletin;
+          } else if (
+            bulletin.title.toLowerCase().includes(query.toLowerCase())
+          ) {
+            return bulletin;
+          }
+          return false;
+        }).length / productPerPage
+      );
 
     const handlePageClick = ({ selected }) => {
         // const selectedPage = e.selected;
