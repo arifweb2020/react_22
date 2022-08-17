@@ -12,7 +12,7 @@ function Table(props) {
     const productPerPage = 10;
     const [pageCount, setPageCount] = useState(0)
     const history = useHistory()
-    const { i18n , t } = useTranslation(["common", "table"]);
+    const { i18n, t } = useTranslation(["common", "table"]);
 
     // https://www.youtube.com/watch?v=rgY1oPNVgwU
     // https://www.youtube.com/watch?v=xRBE4iKX0yw&t=2020s
@@ -71,6 +71,7 @@ function Table(props) {
             </select>
             <h1>{t("table:tableHeader")} <span onClick={() => history.push('/react-table')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>React Table</span>
                 - <span onClick={() => history.push('/ntable')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>Next Table</span>
+                - <span onClick={() => history.push('/ftable')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>Filter Table</span>
             </h1>
             <p>Page {pageNo} of {Math.ceil(data.length / 10)}</p>
             <p>

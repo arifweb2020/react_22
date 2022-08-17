@@ -12,7 +12,8 @@ const getAllData = () => {
 }
 
 function Crud(props) {
-    const [data, setData] = useState(getAllData())
+    const [data, setData] = useState(getAllData());
+    const [filteredData, setFilteredData] = useState(getAllData());
     const [name, setName] = useState("")
     const [course, setCourse] = useState("")
     const [city, setCity] = useState("")
@@ -85,6 +86,8 @@ function Crud(props) {
             || ele.city.toLowerCase().includes(query) || ele.course.toLowerCase().includes(query)
         ).slice(page * 5, (page * 5) + 5)
     }, [data, page, query])
+
+    
 
     const nextPage = () => {
         // u can put validation like that
