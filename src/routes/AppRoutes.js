@@ -28,6 +28,7 @@ const Table = React.lazy(() => import('./../features/table/Table'));
 const Rtable = React.lazy(() => import('./../features/table/Rtable'));
 const Ntable = React.lazy(() => import('./../features/table/NextTable'));
 const Ftable = React.lazy(() => import('./../features/table/Ftable'));
+const Mtable = React.lazy(() => import('./../features/table/Mtable'));
 
 function AppRoutes(props) {
    
@@ -52,7 +53,8 @@ function AppRoutes(props) {
                     <Route exact path="/table" name="speech" component={Table} />
                     <Route exact path="/react-table" name="table" component={Rtable} />
                     <Route exact path="/ntable" name="ntable" component={Ntable} />
-                    <Route exact path="/ftable" name="ntable" component={Ftable} />
+                    <Route exact path="/ftable" name="ftable" component={Ftable} />
+                    <Route exact path="/mtable" name="mtable" component={Mtable} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>

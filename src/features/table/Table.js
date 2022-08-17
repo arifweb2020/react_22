@@ -19,6 +19,7 @@ function Table(props) {
     //https://www.youtube.com/watch?v=xRBE4iKX0yw
     // https://codesandbox.io/s/react-data-table-forked-d6m05?file=/src/index.js
     //https://stackblitz.com/edit/react-1zaeqk?file=src%2FPagination.js
+    // https://academind.com/tutorials/reactjs-pagination
 
     useEffect(() => {
         const getData = async () => {
@@ -72,6 +73,7 @@ function Table(props) {
             <h1>{t("table:tableHeader")} <span onClick={() => history.push('/react-table')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>React Table</span>
                 - <span onClick={() => history.push('/ntable')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>Next Table</span>
                 - <span onClick={() => history.push('/ftable')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>Filter Table</span>
+                -  - <span onClick={() => history.push('/mtable')} style={{ cursor: 'pointer', textDecoration: 'underline', fontSize: '17px' }}>Filter Paginate Table</span>
             </h1>
             <p>Page {pageNo} of {Math.ceil(data.length / 10)}</p>
             <p>
@@ -118,6 +120,7 @@ function Table(props) {
                 //  breakClassName={"page-item"}
                 breakLinkClassName={"page-link"}
                 activeClassName={"active"}
+                forcePage={pageNumber}
             />
         </div>
     );
