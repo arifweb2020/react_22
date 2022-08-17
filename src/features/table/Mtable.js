@@ -2,123 +2,30 @@ import React from 'react';
 import { Col, Row } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
-import BulletinList from "./../../comonents/BulletinList"
+
 
 const Mtable = () => {
     const [bulletins,setBulletins]=React.useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [searchTerm, setSearchTerm] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
+  
+    const bulletinsPerPage = 8;
     React.useEffect(()=>{
         const getData = async () => {
             const res = await fetch("https://jsonplaceholder.typicode.com/albums")
             const res1 = await res.json()
             setBulletins(res1)
-           // setPageCount(Math.ceil(res1?.length / productPerPage))
+            setPageCount(Math.ceil(res1?.length / bulletinsPerPage))
         }
         getData()
     }
     ,[])
-//   const [bulletins] = useState([
-//     {
-//       bbID: 1,
-//       liveStatus: "live",
-//       title: "Bulletin 1",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 20
-//     },
-//     {
-//       bbID: 2,
-//       liveStatus: "live",
-//       title: "Bulletin 2",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 3
-//     },
-//     {
-//       bbID: 3,
-//       liveStatus: "end",
-//       title: "Bulletin 3",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 28
-//     },
-//     {
-//       bbID: 4,
-//       liveStatus: "live",
-//       title: "Bulletin 4",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 17
-//     },
-//     {
-//       bbID: 5,
-//       liveStatus: "live",
-//       title: "Bulletin 5",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 20
-//     },
-//     {
-//       bbID: 6,
-//       liveStatus: "live",
-//       title: "Bulletin 6",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 3
-//     },
-//     {
-//       bbID: 7,
-//       liveStatus: "end",
-//       title: "Bulletin 7",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 28
-//     },
-//     {
-//       bbID: 8,
-//       liveStatus: "live",
-//       title: "Bulletin 8",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 17
-//     },
-//     {
-//       bbID: 9,
-//       liveStatus: "live",
-//       title: "Bulletin 9",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 20
-//     },
-//     {
-//       bbID: 10,
-//       liveStatus: "live",
-//       title: "Bulletin 10",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 3
-//     },
-//     {
-//       bbID: 11,
-//       liveStatus: "end",
-//       title: "Bulletin 11",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 28
-//     },
-//     {
-//       bbID: 12,
-//       liveStatus: "live",
-//       title: "Bulletin 12",
-//       createdDate: "2021-07-28 12:00:00",
-//       createdBy: "Mary",
-//       viewCount: 17
-//     }
-//   ]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [pageNumber, setPageNumber] = useState(0);
 
-  const bulletinsPerPage = 8;
+  
+
+ 
   const pagesVisited = pageNumber * bulletinsPerPage;
 
   const displayBulletins = bulletins
@@ -143,18 +50,18 @@ const Mtable = () => {
       );
     });
 
-  const pageCount = Math.ceil(
-    bulletins.filter((bulletin) => {
-      if (searchTerm === "") {
-        return bulletin;
-      } else if (
-        bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return bulletin;
-      }
-      return false;
-    }).length / bulletinsPerPage
-  );
+//   const pageCount = Math.ceil(
+//     bulletins.filter((bulletin) => {
+//       if (searchTerm === "") {
+//         return bulletin;
+//       } else if (
+//         bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
+//       ) {
+//         return bulletin;
+//       }
+//       return false;
+//     }).length / bulletinsPerPage
+//   );
 
   const handlePageChange = ({ selected }) => {
     setPageNumber(selected);

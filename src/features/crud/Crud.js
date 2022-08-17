@@ -22,6 +22,9 @@ function Crud(props) {
     const [query, setQuery] = useState("")
     const [page, setPage] = React.useState(0);
 
+    const aa = JSON.parse(localStorage.getItem("studentsList"))
+    console.log("arif " + aa)
+
     const handleClose = () => {
         setShow(false);
         setName("")
@@ -59,6 +62,14 @@ function Crud(props) {
 
     const handleSubmission = (e) => {
         e.preventDefault();
+        const x = JSON.parse(localStorage.getItem("studentsList"))
+        const y = x.find((ele) => ele.name === name)
+        
+        if (y) {
+          return alert("Name already taken")
+          
+            
+        }
         let allCred = {
             name,
             course,
@@ -87,7 +98,7 @@ function Crud(props) {
         ).slice(page * 5, (page * 5) + 5)
     }, [data, page, query])
 
-    
+
 
     const nextPage = () => {
         // u can put validation like that
@@ -168,7 +179,7 @@ function Crud(props) {
                         </>
                             : <h2>No data found</h2>
                     }
-                   {data.length}
+                    {data.length}
                     <button onClick={prevPage}
                         className="btn btn-sm btn-primary mr-4"
                         disabled={page === 0}
