@@ -62,9 +62,13 @@ function Crud(props) {
         e.preventDefault();
         const x = JSON.parse(localStorage.getItem("studentsList"))
         const y = x.find((ele) => ele.name === name)
-        
+
         if (y) {
-          return alert("Name already taken")   
+            alert("Name already taken")
+            setName("")
+            setCourse("")
+            setCity("")
+            return
         }
         let allCred = {
             name,
