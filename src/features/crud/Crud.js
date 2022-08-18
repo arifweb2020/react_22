@@ -13,7 +13,6 @@ const getAllData = () => {
 
 function Crud(props) {
     const [data, setData] = useState(getAllData());
-    const [filteredData, setFilteredData] = useState(getAllData());
     const [name, setName] = useState("")
     const [course, setCourse] = useState("")
     const [city, setCity] = useState("")
@@ -22,8 +21,7 @@ function Crud(props) {
     const [query, setQuery] = useState("")
     const [page, setPage] = React.useState(0);
 
-    const aa = JSON.parse(localStorage.getItem("studentsList"))
-    console.log("arif " + aa)
+
 
     const handleClose = () => {
         setShow(false);
@@ -66,9 +64,7 @@ function Crud(props) {
         const y = x.find((ele) => ele.name === name)
         
         if (y) {
-          return alert("Name already taken")
-          
-            
+          return alert("Name already taken")   
         }
         let allCred = {
             name,

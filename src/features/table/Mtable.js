@@ -5,28 +5,25 @@ import { useState } from "react";
 
 
 const Mtable = () => {
-    const [bulletins,setBulletins]=React.useState([]);
-    const [pageCount, setPageCount] = useState(0);
-    const [searchTerm, setSearchTerm] = useState("");
+  const [bulletins, setBulletins] = React.useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
-  
-    const bulletinsPerPage = 8;
-    React.useEffect(()=>{
-        const getData = async () => {
-            const res = await fetch("https://jsonplaceholder.typicode.com/albums")
-            const res1 = await res.json()
-            setBulletins(res1)
-            setPageCount(Math.ceil(res1?.length / bulletinsPerPage))
-        }
-        getData()
+
+  const dataPerPage = 10;
+  React.useEffect(() => {
+    const getData = async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/albums")
+      const res1 = await res.json()
+      setBulletins(res1)
+      setPageCount(Math.ceil(res1?.length / dataPerPage))
     }
-    ,[])
+    getData()
+  }
+    , [])
 
-  
-
- 
-  const pagesVisited = pageNumber * bulletinsPerPage;
+  const pagesVisited = pageNumber * dataPerPage;
 
   const displayBulletins = bulletins
     .filter((bulletin) => {
@@ -39,7 +36,7 @@ const Mtable = () => {
       }
       return false;
     })
-    .slice(pagesVisited, pagesVisited + bulletinsPerPage)
+    .slice(pagesVisited, pagesVisited + dataPerPage)
     .map((bulletin) => {
       return (
         <>
@@ -50,18 +47,18 @@ const Mtable = () => {
       );
     });
 
-//   const pageCount = Math.ceil(
-//     bulletins.filter((bulletin) => {
-//       if (searchTerm === "") {
-//         return bulletin;
-//       } else if (
-//         bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
-//       ) {
-//         return bulletin;
-//       }
-//       return false;
-//     }).length / bulletinsPerPage
-//   );
+  //   const pageCount = Math.ceil(
+  //     bulletins.filter((bulletin) => {
+  //       if (searchTerm === "") {
+  //         return bulletin;
+  //       } else if (
+  //         bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
+  //       ) {
+  //         return bulletin;
+  //       }
+  //       return false;
+  //     }).length / dataPerPage
+  //   );
 
   const handlePageChange = ({ selected }) => {
     setPageNumber(selected);
@@ -70,7 +67,7 @@ const Mtable = () => {
   return (
     <div className='container mt-4'>
       <div className="search-wrapper">
-       
+
         <label for="search-form">
           <input
             type="search"

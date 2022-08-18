@@ -90,7 +90,11 @@ function Table(props) {
                 <div className='col-md-4'>
                     <input type="text"
                         className='form-control'
-                        onChange={(e) => setQuery(e.target.value)}
+                        onChange={(e) => {
+                            setQuery(e.target.value)
+                            handlePageClick({ selected: 0 });
+                        }
+                        }
                     />
                 </div>
                 <div className='col-md-12 mt-3'>

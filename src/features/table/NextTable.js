@@ -59,7 +59,15 @@ function NextTable(props) {
     return (
         <div className='container mt-5 mb-5'>
             {page}
-            <input type="text" value={searchTxtx} placeholder="Search " onChange={(e) => setSearchTxt(e.target.value)} />
+            <input type="text" value={searchTxtx}
+             placeholder="Search "
+              onChange={(e) => {
+                setSearchTxt(e.target.value)
+                setPage(0);
+                
+            } 
+              }
+              />
             <select onChange={perPage} className="ml-2">
                 {
                     aa.map((ele) => {
