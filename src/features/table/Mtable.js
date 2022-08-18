@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Mtable = () => {
   const [bulletins, setBulletins] = React.useState([]);
-  const [pageCount, setPageCount] = useState(0);
+ // const [pageCount, setPageCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -17,7 +17,7 @@ const Mtable = () => {
       const res = await fetch("https://jsonplaceholder.typicode.com/albums")
       const res1 = await res.json()
       setBulletins(res1)
-      setPageCount(Math.ceil(res1?.length / dataPerPage))
+     // setPageCount(Math.ceil(res1?.length / dataPerPage))
     }
     getData()
   }
@@ -47,18 +47,18 @@ const Mtable = () => {
       );
     });
 
-  //   const pageCount = Math.ceil(
-  //     bulletins.filter((bulletin) => {
-  //       if (searchTerm === "") {
-  //         return bulletin;
-  //       } else if (
-  //         bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
-  //       ) {
-  //         return bulletin;
-  //       }
-  //       return false;
-  //     }).length / dataPerPage
-  //   );
+    const pageCount = Math.ceil(
+      bulletins.filter((bulletin) => {
+        if (searchTerm === "") {
+          return bulletin;
+        } else if (
+          bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
+        ) {
+          return bulletin;
+        }
+        return false;
+      }).length / dataPerPage
+    );
 
   const handlePageChange = ({ selected }) => {
     setPageNumber(selected);
