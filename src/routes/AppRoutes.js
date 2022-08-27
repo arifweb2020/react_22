@@ -29,6 +29,8 @@ const Rtable = React.lazy(() => import('./../features/table/Rtable'));
 const Ntable = React.lazy(() => import('./../features/table/NextTable'));
 const Ftable = React.lazy(() => import('./../features/table/Ftable'));
 const Mtable = React.lazy(() => import('./../features/table/Mtable'));
+const Dark = React.lazy(() => import('./../features/dark/Dark'));
+
 
 function AppRoutes(props) {
    
@@ -55,6 +57,7 @@ function AppRoutes(props) {
                     <Route exact path="/ntable" name="ntable" component={Ntable} />
                     <Route exact path="/ftable" name="ftable" component={Ftable} />
                     <Route exact path="/mtable" name="mtable" component={Mtable} />
+                    <Route exact path="/dark" name="theme" component={Dark} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>
