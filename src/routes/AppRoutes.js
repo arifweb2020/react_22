@@ -30,6 +30,8 @@ const Ntable = React.lazy(() => import('./../features/table/NextTable'));
 const Ftable = React.lazy(() => import('./../features/table/Ftable'));
 const Mtable = React.lazy(() => import('./../features/table/Mtable'));
 const Dark = React.lazy(() => import('./../features/dark/Dark'));
+const Fhook = React.lazy(() => import('./../features/fetch-hook/Fhook'));
+const QueryHook = React.lazy(() => import('./../features/fetch-hook/QueryHook'));
 
 
 function AppRoutes(props) {
@@ -58,6 +60,8 @@ function AppRoutes(props) {
                     <Route exact path="/ftable" name="ftable" component={Ftable} />
                     <Route exact path="/mtable" name="mtable" component={Mtable} />
                     <Route exact path="/dark" name="theme" component={Dark} />
+                    <Route exact path="/fetch-hook" name="fhook" component={Fhook} />
+                    <Route exact path="/query-hook" name="qhook" component={QueryHook} />
                     <Route exact path="/error-404" name="error404" component={Error404} />
                     <Route render={() => <Redirect to="/error-404" />} />
                 </Switch>

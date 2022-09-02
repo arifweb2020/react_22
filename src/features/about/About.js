@@ -9,11 +9,17 @@ function About(props) {
     const [loading, setLaoding] = React.useState(true)
 
     React.useEffect(() => {
-        const getData = async () => {
-            const res = await fetch("https://jsonplaceholder.typicode.com/users")
-            const res1 = await res.json()
-            setData(res1)
-            setLaoding(false)
+        const getData = async () => { 
+            try{
+                const res = await fetch("https://jsonplaceholder.typicode.com/users")
+                const res1 = await res.json()
+                setData(res1)
+                setLaoding(false)
+            }
+            catch(err){
+                console.log("ss " + err )
+            }
+          
         }
         getData()
     }, [])

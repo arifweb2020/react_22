@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   decrement,
@@ -12,6 +12,10 @@ import styles from './Counter.module.css';
 import SkeletonLoader from '../../comonents/skeleton/SkeletonLoader';
 import Box from '../../comonents/box/Box';
 import ErrorBoundary from '../../comonents/error-boundry/ErrorBoundry';
+import QueryHook from '../fetch-hook/QueryHook';
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 export default function Counter() {
   const name = useSelector(state => state.user.data)
@@ -19,20 +23,28 @@ export default function Counter() {
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
+  const inputref = useRef()
+
+  const inputChng = () => {
+    // eslint-disable-next-line no-unused-expressions
+    inputref.current.value
+    console.log("input ref value is " + inputref.current.value)
+  }
+
   const [state, setState] = useState({ counts: 0, name: "Increment" })
 
   const sign = state.name;
   const total = state.counts;
 
-  const Inc = ()=>{
-    setState((prev)=>{
-      return {...prev,counts:prev.counts+1}
+  const Inc = () => {
+    setState((prev) => {
+      return { ...prev, counts: prev.counts + 1 }
     })
   }
 
-  const Dec = ()=>{
-    setState((prev)=>{
-      return {...prev,name:"Decrement",counts:prev.counts-1}
+  const Dec = () => {
+    setState((prev) => {
+      return { ...prev, name: "Decrement", counts: prev.counts - 1 }
     })
   }
 
@@ -91,12 +103,20 @@ export default function Counter() {
         </button>
       </div>
       <div>
+        <input type="text" ref={inputref} onChange={inputChng} />
         {sign}
         <button onClick={Inc}>+</button>
         {total}
-      <button onClick={Dec}>-</button>
-        </div >
-     
+        <button onClick={Dec}>-</button>
+      </div >
+
+      <div>
+
+        <QueryClientProvider client={queryClient}>
+          <QueryHook />
+        </QueryClientProvider>
+      </div>
+
     </div >
   );
 }
