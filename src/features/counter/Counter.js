@@ -19,14 +19,29 @@ export default function Counter() {
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
- 
+  const [state, setState] = useState({ counts: 0, name: "Increment" })
 
- 
+  const sign = state.name;
+  const total = state.counts;
+
+  const Inc = ()=>{
+    setState((prev)=>{
+      return {...prev,counts:prev.counts+1}
+    })
+  }
+
+  const Dec = ()=>{
+    setState((prev)=>{
+      return {...prev,name:"Decrement",counts:prev.counts-1}
+    })
+  }
+
+
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
     <div>
-    
+
       <h1>{name ? name[0]?.name : <SkeletonLoader width="200px" />}</h1>
       <ErrorBoundary>
         <Box text='' />
@@ -75,6 +90,13 @@ export default function Counter() {
           Add If Odd
         </button>
       </div>
-    </div>
+      <div>
+        {sign}
+        <button onClick={Inc}>+</button>
+        {total}
+      <button onClick={Dec}>-</button>
+        </div >
+     
+    </div >
   );
 }
