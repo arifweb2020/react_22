@@ -6,6 +6,13 @@ export const endpointURL = process.env.REACT_APP_API_URL;
 //     : "http://microservice-arif/api-backend";
 
 
+// let API_ENDPOINT
+// if (process.env.NODE_ENV === "production") {
+//   API_ENDPOINT = "https://example.com"
+// } else {
+//   API_ENDPOINT = "https://dev.example.com"
+// }
+
 
 export const endpointNames = {
     patient:{
