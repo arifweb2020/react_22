@@ -61,7 +61,7 @@ function Crud(props) {
     const handleSubmission = (e) => {
         e.preventDefault();
         const x = JSON.parse(localStorage.getItem("studentsList"))
-        const y = x.find((ele) => ele.name === name)
+        const y = x.find((ele) => ele.name.toLowerCase() === name.toLowerCase())
 
         if (y) {
             alert("Name already taken")
