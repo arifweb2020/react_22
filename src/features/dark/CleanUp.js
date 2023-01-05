@@ -56,7 +56,7 @@ const Hello = () => {
         })();
         //aborts the request when the component umounts
         return () => controller?.abort();
-      });
+      },[]);
     return (
         <div>
         {list === null ? (
@@ -64,7 +64,7 @@ const Hello = () => {
         ) : (
           <>
             {list.map((item) => {
-              return <pre key={item.id}>{item.name}</pre>;
+              return <pre key={item.id}>{item.title}</pre>;
             })}
           </>
         )}

@@ -21,7 +21,7 @@ export const forgotPasswordAsync = createAsyncThunk(
       } catch (error) {
         return null;
       }
-    }
+      }
   );
 
 
